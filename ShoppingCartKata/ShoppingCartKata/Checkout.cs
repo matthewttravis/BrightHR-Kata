@@ -30,19 +30,29 @@
             foreach (var itemGroup in groups)
             {
                 var itemCount = itemGroup.Count();
-                if (itemGroup.Key == "A")
+                switch (itemGroup.Key)
                 {
-                    while (itemCount >= 3)
-                    {
-                        itemCount -= 3;
-                        total += 130;
-                    }
+                    case "A":
+                        while (itemCount >= 3)
+                        {
+                            itemCount -= 3;
+                            total += 130;
+                        }
 
-                    total += itemCount * 50;
-                }
-                else
-                {
-                    total += _priceList[itemGroup.Key];
+                        total += itemCount * 50;
+                        break;
+                    case "B":
+                        while (itemCount >= 2)
+                        {
+                            itemCount -= 2;
+                            total += 45;
+                        }
+
+                        total += itemCount * 30;
+                        break;
+                    default:
+                        total += _priceList[itemGroup.Key];
+                        break;
                 }
             }
 
