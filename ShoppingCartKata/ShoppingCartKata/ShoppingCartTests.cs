@@ -5,6 +5,8 @@ namespace ShoppingCartKata
     [TestFixture]
     public class ShoppingCartTests
     {
+        #region Single Item Tests
+
         [Test]
         public void CanScanItemA()
         {
@@ -13,9 +15,9 @@ namespace ShoppingCartKata
 
             var total = checkout.GetTotalPrice();
 
-            Assert.AreEqual(total, 50);
+            Assert.AreEqual(50, total);
         }
-        
+
         [Test]
         public void CanScanItemB()
         {
@@ -24,7 +26,7 @@ namespace ShoppingCartKata
 
             var total = checkout.GetTotalPrice();
 
-            Assert.AreEqual(total, 30);
+            Assert.AreEqual(30, total);
         }
 
         [Test]
@@ -35,7 +37,7 @@ namespace ShoppingCartKata
 
             var total = checkout.GetTotalPrice();
 
-            Assert.AreEqual(total, 20);
+            Assert.AreEqual(20, total);
         }
 
         [Test]
@@ -46,7 +48,36 @@ namespace ShoppingCartKata
 
             var total = checkout.GetTotalPrice();
 
-            Assert.AreEqual(total, 15);
+            Assert.AreEqual(15, total);
+        } 
+
+        #endregion
+
+        [Test]
+        public void CanScanAllItems()
+        {
+            var checkout = new Checkout();
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("D");
+
+            var total = checkout.GetTotalPrice();
+
+            Assert.AreEqual(115, total);
+        }
+
+        [Test]
+        public void CanScanMultiBuy()
+        {
+            var checkout = new Checkout();
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("A");
+
+            var total = checkout.GetTotalPrice();
+
+            Assert.AreEqual(130, total);
         }
     }
 }
