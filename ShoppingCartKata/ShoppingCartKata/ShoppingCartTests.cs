@@ -68,7 +68,7 @@ namespace ShoppingCartKata
         #endregion
 
         [Test]
-        public void CanScanMultiBuy()
+        public void CanScanMultiBuyA()
         {
             var checkout = new Checkout();
             checkout.Scan("A");
@@ -78,6 +78,18 @@ namespace ShoppingCartKata
             var total = checkout.GetTotalPrice();
 
             Assert.AreEqual(130, total);
+        }
+
+        [Test]
+        public void CanScanMultiBuyB()
+        {
+            var checkout = new Checkout();
+            checkout.Scan("B");
+            checkout.Scan("B");
+
+            var total = checkout.GetTotalPrice();
+
+            Assert.AreEqual(45, total);
         }
     }
 }
