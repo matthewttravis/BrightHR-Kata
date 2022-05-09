@@ -6,9 +6,14 @@ namespace ShoppingCartKata
     public class ShoppingCartTests
     {
         [Test]
-        public void MyTestMethod()
+        public void CanScanItem()
         {
-            Assert.Fail();
+            var checkout = new Checkout();
+            checkout.Scan("A");
+
+            var total = checkout.GetTotalPrice();
+
+            Assert.AreEqual(total, 50);
         }
     }
 }

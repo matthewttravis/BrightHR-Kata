@@ -2,14 +2,21 @@
 {
     public class Checkout: ICheckout
     {
+        private int _total;
+
         public void Scan(string item)
         {
-            throw new NotImplementedException();
+            switch (item)
+            {
+                case "A":
+                    _total += 50;
+                    return;
+            }
         }
 
         public int GetTotalPrice()
         {
-            throw new NotImplementedException();
+            return _total;
         }
     }
 }
