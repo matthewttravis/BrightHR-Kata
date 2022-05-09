@@ -5,91 +5,17 @@ namespace ShoppingCartKata
     [TestFixture]
     public class ShoppingCartTests
     {
-        #region Single Item Tests
-
-        [Test]
-        public void CanScanItemA()
+        [TestCaseSource(typeof(TestItemData), nameof(TestItemData.Items))]
+        public int CanScanItems(List<string> items)
         {
             var checkout = new Checkout();
-            checkout.Scan("A");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(50, total);
-        }
-
-        [Test]
-        public void CanScanItemB()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("B");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(30, total);
-        }
-
-        [Test]
-        public void CanScanItemC()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("C");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(20, total);
-        }
-
-        [Test]
-        public void CanScanItemD()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("D");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(15, total);
-        } 
-
-        [Test]
-        public void CanScanAllItems()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("A");
-            checkout.Scan("B");
-            checkout.Scan("C");
-            checkout.Scan("D");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(115, total);
-        }
-
-        #endregion
-
-        [Test]
-        public void CanScanMultiBuyA()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("A");
-            checkout.Scan("A");
-            checkout.Scan("A");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(130, total);
-        }
-
-        [Test]
-        public void CanScanMultiBuyB()
-        {
-            var checkout = new Checkout();
-            checkout.Scan("B");
-            checkout.Scan("B");
-
-            var total = checkout.GetTotalPrice();
-
-            Assert.AreEqual(45, total);
+            
+            foreach (var item in items)
+            {
+                checkout.Scan(item);
+            }
+            
+            return checkout.GetTotalPrice();
         }
     }
 }
