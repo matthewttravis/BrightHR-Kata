@@ -4,23 +4,22 @@
     {
         private int _total;
 
+        private readonly Dictionary<string, int> _priceList;
+
+        public Checkout()
+        {
+            _priceList = new Dictionary<string, int>
+            {
+                { "A", 50 },
+                { "B", 30 },
+                { "C", 20 },
+                { "D", 15 }
+            };
+        }
+
         public void Scan(string item)
         {
-            switch (item)
-            {
-                case "A":
-                    _total += 50;
-                    return;
-                case "B":
-                    _total += 30;
-                    return;
-                case "C":
-                    _total += 20;
-                    return;
-                case "D":
-                    _total += 15;
-                    return;
-            }
+            _total += _priceList[item];
         }
 
         public int GetTotalPrice()

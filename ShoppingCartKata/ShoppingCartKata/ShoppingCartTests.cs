@@ -51,8 +51,6 @@ namespace ShoppingCartKata
             Assert.AreEqual(15, total);
         } 
 
-        #endregion
-
         [Test]
         public void CanScanAllItems()
         {
@@ -66,6 +64,8 @@ namespace ShoppingCartKata
 
             Assert.AreEqual(115, total);
         }
+
+        #endregion
 
         [Test]
         public void CanScanMultiBuy()
