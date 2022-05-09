@@ -11,6 +11,15 @@
                 case "A":
                     _total += 50;
                     return;
+                case "B":
+                    _total += 30;
+                    return;
+                case "C":
+                    _total += 20;
+                    return;
+                case "D":
+                    _total += 15;
+                    return;
             }
         }
 
