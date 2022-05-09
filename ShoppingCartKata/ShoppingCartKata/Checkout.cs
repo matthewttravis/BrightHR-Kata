@@ -30,16 +30,9 @@
 
         public int GetTotalPrice()
         {
-            var total = 0;
-
             var groups = _shoppingCart.GroupBy(x => x);
 
-            foreach (var itemGroup in groups)
-            {
-                total += ProcessPrice(itemGroup);
-            }
-
-            return total;
+            return groups.Sum(ProcessPrice);
         }
 
         private int ProcessPrice(IGrouping<string, string> itemGroup)
